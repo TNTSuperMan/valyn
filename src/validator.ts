@@ -9,7 +9,7 @@ const isNumber = (v: unknown) => typeof v === "number";
 const isString = (v: unknown) => typeof v === "string";
 const isSymbol = (v: unknown) => typeof v === "symbol";
 
-export const instanceCache = createValidatorCache();
+export const fetchInstanceValidator = createValidatorCache();
 
 const isNull = (v: unknown) => v === null;
 
@@ -22,8 +22,7 @@ const aniedSchemaToValidator = (schema: unknown): (v: unknown) => boolean => {
             else if(schema === Number) return isNumber;
             else if(schema === String) return isString;
             else if(schema === Symbol) return isSymbol;
-            else return instanceCache.get(schema) ??
-                instanceCache.set(schema, v => v instanceof schema);
+            else return fetchInstanceValidator(schema, v => v instanceof schema);
         case "object":
             if(schema === null)
                 return isNull;

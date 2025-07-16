@@ -1,12 +1,6 @@
-export const createValidatorCache = () => {
-    const map = new WeakMap<Function, (value: unknown) => boolean>();
+export const createValidatorCache = <T extends (value: unknown) => boolean>() => {
+    const map = new WeakMap<Function, T>();
 
-    return {
-        get(k: Function){
-            return map.get(k);
-        },
-        set(k: Function, v: (value: unknown) => boolean){
-            return map.set(k, v), v;
-        }
-    }
+    return (k: Function, v: T): T =>
+        map.get(k) ?? (map.set(k, v), v);
 }
