@@ -1,0 +1,16 @@
+{
+  "name": "valyn",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "mitata": "^1.0.34",
+    "zod": "^4.0.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "scripts": {
+    "build": "bun build --outdir=dist --minify src/index"
+  }
+}
