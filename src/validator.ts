@@ -2,7 +2,6 @@ import { createValidatorCache } from "./cache";
 import { CustomValidator } from "./custom";
 import { type ValynValidator } from "./types";
 
-const isFunction = (v: unknown) => typeof v === "function";
 const isBoolean = (v: unknown) => typeof v === "boolean";
 const isBigint = (v: unknown) => typeof v === "bigint";
 const isNumber = (v: unknown) => typeof v === "number";
@@ -16,8 +15,7 @@ const isNull = (v: unknown) => v === null;
 const aniedSchemaToValidator = (schema: unknown): (v: unknown) => boolean => {
     switch(typeof schema){
         case "function":
-            if(schema === Function) return isFunction;
-            else if(schema === Boolean) return isBoolean;
+            if(schema === Boolean) return isBoolean;
             else if(schema === BigInt) return isBigint;
             else if(schema === Number) return isNumber;
             else if(schema === String) return isString;

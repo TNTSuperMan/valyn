@@ -3,7 +3,6 @@ import type { CustomValidator } from "./custom";
 type Primitive = null | void | bigint | boolean | number | string | symbol;
 
 export type ValynInstance<T> =
-    T extends FunctionConstructor ? Function :
     T extends BooleanConstructor ? boolean :
     T extends BigIntConstructor ? bigint :
     T extends NumberConstructor ? number :
