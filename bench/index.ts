@@ -108,9 +108,7 @@ bench("Create valyn schema", createValynSchema);
 const zodSchema = createZodSchema();
 const valynSchema = createValynSchema();
 
-const obj_ = obj();
-
-bench("Validate zod schema", () => zodSchema.parse(obj_));
-bench("Validate valyn schema", () => valynSchema.parse(obj_));
+bench("Validate zod schema", () => zodSchema.parse(obj()));
+bench("Validate valyn schema", () => valynSchema.parse(obj()));
 
 await run();
